@@ -1,5 +1,7 @@
 using EShopper.Catalog.Repositories;
 using EShopper.Catalog.Services.CategoryServices;
+using EShopper.Catalog.Services.FeatureService;
+using EShopper.Catalog.Services.ProductService;
 using EShopper.Catalog.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -11,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IFeatureService, FeatureService>();
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 
